@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [HLS 200-40] In file included from test/Cppversion/CKANv2.cpp:3:&#xD;&#xA;In file included from C:/Xilinx/Vivado/2019.2/win64/tools/clang/bin\..\lib\clang\3.1/../../../include/c++/4.5.2\random:34:&#xD;&#xA;C:/Xilinx/Vivado/2019.2/win64/tools/clang/bin\..\lib\clang\3.1/../../../include/c++/4.5.2\bits/c++0x_warning.h:31:2: error: This file requires compiler and library support for the upcoming ISO C++ standard, C++0x. This support is currently experimental, and must be enabled with the -std=c++0x or -std=gnu++0x compiler options.&#xD;&#xA;#error This file requires compiler and library support for the upcoming \&#xD;&#xA; ^&#xD;&#xA;1 error generated.&#xD;&#xA;C preprocessor failed.&#xD;&#xA;    while executing&#xD;&#xA;&quot;source D:/project/FPGA/hls/test/solution1/csynth.tcl&quot;&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;hls::main D:/project/FPGA/hls/test/solution1/csynth.tcl&quot;&#xD;&#xA;    (&quot;uplevel&quot; body line 1)&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;uplevel 1 hls::main {*}$args&quot;&#xD;&#xA;    (procedure &quot;hls_proc&quot; line 5)&#xD;&#xA;    invoked from within&#xD;&#xA;&quot;hls_proc $argv&quot;&#xD;&#xA;" projectName="test" solutionName="solution1" date="2025-04-05T18:26:59.066+0800" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

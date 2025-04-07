@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="test.cpp" path="D:\project\FPGA\hls\test\test.cpp"/>
+    <originFiles name="kan_paras.h" path="D:\project\FPGA\hls\test\Cppversion\kan_paras.h"/>
+    <originFiles name="add_axi.h" path="D:\project\FPGA\hls\test\add_axi.h"/>
+    <originFiles name="CKANv2.cpp" path="D:\project\FPGA\hls\test\Cppversion\CKANv2.cpp"/>
+  </source>
+  <testbench/>
+</autopilotfilemapping:AutoPilotFileMapping>

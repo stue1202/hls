@@ -1,0 +1,38 @@
+INFO: Applying HLS Y2K22 patch v1.2 for IP revision
+INFO: [HLS 200-10] Running 'C:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/vivado_hls.exe'
+INFO: [HLS 200-10] For user 'stue1202' on host 'stuelaptop' (Windows NT_amd64 version 6.2) on Sat Apr 05 18:26:52 +0800 2025
+INFO: [HLS 200-10] In directory 'D:/project/FPGA/hls'
+Sourcing Tcl script 'D:/project/FPGA/hls/test/solution1/csynth.tcl'
+INFO: [HLS 200-10] Opening project 'D:/project/FPGA/hls/test'.
+INFO: [HLS 200-10] Adding design file 'test/Cppversion/CKANv2.cpp' to the project
+INFO: [HLS 200-10] Adding design file 'test/add_axi.h' to the project
+INFO: [HLS 200-10] Adding design file 'test/Cppversion/kan_paras.h' to the project
+INFO: [HLS 200-10] Adding design file 'test/test.cpp' to the project
+INFO: [HLS 200-10] Opening solution 'D:/project/FPGA/hls/test/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SYN 201-201] Setting up clock 'default' with an uncertainty of 1.25ns.
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: config_export -vivado_optimization_level=2
+INFO: [HLS 200-435] Setting 'config_sdx -target' configuration: set_clock_uncertainty default
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'test/test.cpp' ... 
+INFO: [HLS 200-10] Analyzing design file 'test/Cppversion/CKANv2.cpp' ... 
+WARNING: [HLS 200-40] In file included from test/Cppversion/CKANv2.cpp:3:
+In file included from C:/Xilinx/Vivado/2019.2/win64/tools/clang/bin\..\lib\clang\3.1/../../../include/c++/4.5.2\random:34:
+C:/Xilinx/Vivado/2019.2/win64/tools/clang/bin\..\lib\clang\3.1/../../../include/c++/4.5.2\bits/c++0x_warning.h:31:2: error: This file requires compiler and library support for the upcoming ISO C++ standard, C++0x. This support is currently experimental, and must be enabled with the -std=c++0x or -std=gnu++0x compiler options.
+#error This file requires compiler and library support for the upcoming \
+ ^
+1 error generated.
+C preprocessor failed.
+    while executing
+"source D:/project/FPGA/hls/test/solution1/csynth.tcl"
+    invoked from within
+"hls::main D:/project/FPGA/hls/test/solution1/csynth.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel 1 hls::main {*}$args"
+    (procedure "hls_proc" line 5)
+    invoked from within
+"hls_proc $argv"
