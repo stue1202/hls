@@ -1,20 +1,22 @@
 #ifndef kan_paras
 #define kan_paras
 #include <ap_fixed.h>
-#include <ap_int.h>
+
 typedef ap_fixed<16, 8> fixed_t;
-typedef ap_fixed<16, 8> fixed_i;
-const fixed_i grid_size=5;
-const fixed_i spline_order=3;
+
+const int grid_size=5;
+const int spline_order=3;
 const float scale_base=1.0;
 const float scale_spline=1.0;
-const fixed_i enable_standalone_scale_spline=1;
+const int enable_standalone_scale_spline=1;
 const float grid_eps=0.02;
-const fixed_i grid_range[2]={-1, 1};
-const fixed_i hiden_layers=3;
+const int grid_range[2]={-1, 1};
+const int hiden_layers=3;
+const fixed_t tmp=1.0;
 
 //array
-fixed_t linear_output_arr[1024*1024]={0};
+fixed_t linear_output_arr[1024*3]={0};
+fixed_t x[1024*2]={0};
 fixed_t layers_0_base_weight_arr[1*3*2]={-0.6335, -0.2360, -0.6080, -0.3417, 0.6330, 0.5733};
 fixed_t layers_0_spline_weight_arr[3*2*8]={
     -3.0776e-10, 3.3747e-09, 1.3112e-08, 5.9135e-09, 1.0272e-08, 1.0224e-08, -6.0491e-09, -1.3825e-09,
@@ -49,24 +51,24 @@ fixed_t grid_arr[grid_size + 2 * spline_order + 1]={0};
 fixed_t bases_arr[1024*3*10]={0};
 
 // dimensions
-fixed_i layers_0_base_weight_dim[3]={1,3,2};
-fixed_i layers_0_spline_weight_dim[3]={3,2,8};
-fixed_i layers_0_spline_scaler_dim[3]={1,3,2};
-fixed_i layers_1_base_weight_dim[3]={1,3,3};
-fixed_i layers_1_spline_weight_dim[3]={3,3,8};
-fixed_i layers_1_spline_scaler_dim[3]={1,3,3};
-fixed_i layers_2_base_weight_dim[3]={1,1,3};
-fixed_i layers_2_spline_weight_dim[3]={1,3,8};
-fixed_i layers_2_spline_scaler_dim[3]={1,1,3};
-fixed_i grid_dim[3]={1,1,grid_size + 2 * spline_order + 1};
-fixed_i x_dim[3]={1,1024,2};
-fixed_i linear_output_dim[3]={0};
-fixed_i bases_dim[3]={1024,3,10};
+int layers_0_base_weight_dim[3]={1,3,2};
+int layers_0_spline_weight_dim[3]={3,2,8};
+int layers_0_spline_scaler_dim[3]={1,3,2};
+int layers_1_base_weight_dim[3]={1,3,3};
+int layers_1_spline_weight_dim[3]={3,3,8};
+int layers_1_spline_scaler_dim[3]={1,3,3};
+int layers_2_base_weight_dim[3]={1,1,3};
+int layers_2_spline_weight_dim[3]={1,3,8};
+int layers_2_spline_scaler_dim[3]={1,1,3};
+int grid_dim[3]={1,1,grid_size + 2 * spline_order + 1};
+int x_dim[3]={1,1024,3};
+int linear_output_dim[3]={1,1024,3};
+int bases_dim[3]={1024,3,10};
 
-fixed_i get_index(fixed_i i, fixed_i j, fixed_i k, fixed_t dim[3]){
+int get_index(int i, int j, int k, int dim[3]){
     return i*dim[2]*dim[1]+j*dim[2]+k;
 }
-fixed_i get_dim(fixed_i dim_num,fixed_t dim[3]){
+int get_dim(int dim_num,int dim[3]){
     if (dim_num==3){
         return dim[0];
     }else if (dim_num==2){
@@ -75,19 +77,19 @@ fixed_i get_dim(fixed_i dim_num,fixed_t dim[3]){
         return dim[2];
     }
 }
-void view(fixed_t dim[3]){
+void view(int dim[3]){
     dim[2]*=dim[1];//this->dim1*=this->dim2;
     dim[1]=dim[0];//this->dim2=this->dim3;
     dim[0]=1;//this->dim3=1;
 }
-fixed_i len(fixed_t dim[3]){
+int len(int dim[3]){
     return dim[0]*dim[1]*dim[2];
 }
 void silu(fixed_t x[1024*2]){
-    for(fixed_i i=0;i<get_dim(3,x_dim);i++){
-        for(fixed_i j=0;j<get_dim(2,x_dim);j++){
-            for(fixed_i k=0;k<get_dim(1,x_dim);k++){
-                x[get_index(i,j,k,x_dim)]=x[get_index(i,j,k,x_dim)]/(fixed_t(1.0)+exp(-x[get_index(i,j,k,x_dim)]));
+    for(int i=0;i<get_dim(3,x_dim);i++){
+        for(int j=0;j<get_dim(2,x_dim);j++){
+            for(int k=0;k<get_dim(1,x_dim);k++){
+                x[get_index(i,j,k,x_dim)]=x[get_index(i,j,k,x_dim)]/(tmp+x[get_index(i,j,k,x_dim)]*x[get_index(i,j,k,x_dim)]);
             }
         }
     }
